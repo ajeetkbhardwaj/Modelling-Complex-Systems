@@ -1,0 +1,49 @@
+1. Aspects of Data Systems that apply when data is stored on a single machine ?
+2. What happens if multiple machine involved in storage and retrieval of data ?
+3. Why we want to distribute database across multiple machines ?
+    - Scalability, Fault-Tolerance, High Availability and Latancy
+
+4. How to scale application for higher load ?
+   - Buy more powerfull machines like scaling up compute power with many cpu, ram and disks can be joined togather under one OS and 
+   a fast interconnection among them allow any CPU to access any part of memory or disk via *Shared Memory Architectures* makes all components as single machine.
+5. What are the problems with the shared memory approach ?
+   - Cost grows faster than linear
+   - Bottleneck: a twice size machine can't handle twice the load
+   - limited fault tolerance 
+6. What is the *Shared-disk Architecture* 
+   - It uses several machine with independent CPU, RAM and Disks but stores
+   the data on an array of disks that is shared between machine, which are connected
+   via a fast network. 
+   - It used for data warehousing workloads but limits the scalability of shared-disk approach.
+7. What is *Shared-nothing Architecture*/Horizontal Scaling/Scaling Out ?
+   - Each machine(VM) running database software is called a node and each node uses its CPUs, RAM and Disks independently. Thus, any coordination
+   between nodes is done at software level, using conventional network.
+
+
+
+Chapter-5 : Replication
+1. What is replication ? 
+- A method for keeping a copy of same data on multiple machines that are connected networks.
+2. Why we wanted to replicat data ?
+- Reduce Latancy
+- Increase Availability
+- Increase Read Throughput
+
+Assumption
+1. Replication : Our dataset is small enough that each machine can hold a copy of entire dataset.
+2. Partitioning(Sharding) : Our dataset is big enough that can't be stored on single machine
+
+Different kinds of faults that can occur in a replicated data system and how to deal with them ?
+
+Data is changing over time then the replicatin become hard because of handling changes to replicate data.
+
+Algorithms for replicating changes between nodes
+1. Single-leader
+2. Multi-leader
+3. Leaderless
+
+Almost all of the database uses one of the algorithms but all have many pros and cons
+
+Trade-offs with replication 
+1. Whether to use synchronous or asynchronous replication
+2. How to handle failed replicas
